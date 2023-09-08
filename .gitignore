@@ -31,8 +31,7 @@ pnpm-debug.log*
 # testing
 /coverage
 
-# production
-/build
+
 
 # misc
 .DS_Store
