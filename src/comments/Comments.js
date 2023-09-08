@@ -28,57 +28,55 @@ const Comments = ({ commentsUrl, currentUserId }) => {
     });
   };
 
-  const updateComment = (text, commentId) => {
-    updateCommentApi(text).then(() => {
-      const updatedBackendComments = backendComments.map((backendComment) => {
-        if (backendComment.id === commentId) {
-          return { ...backendComment, body: text };
-        }
-        return backendComment;
-      });
-      setBackendComments(updatedBackendComments);
-      setActiveComment(null);
-    });
-  };
-  const deleteComment = (commentId) => {
-    if (window.confirm("Are you sure you want to remove comment?")) {
-      deleteCommentApi().then(() => {
-        const updatedBackendComments = backendComments.filter(
-          (backendComment) => backendComment.id !== commentId
-        );
-        setBackendComments(updatedBackendComments);
-      });
-    }
-  };
+  const updateComment = (text, commentId, image) => {
+		updateCommentApi(text).then(() => {
+			const updatedBackendComments = backendComments.map((backendComment) => {
+				if (backendComment.id === commentId) {
+					return { ...backendComment, body: text, image: image };
+				}
+				return backendComment;
+			});
+			setBackendComments(updatedBackendComments);
+			setActiveComment(null);
+		});
+	};
+	const deleteComment = (commentId) => {
+		if (window.confirm("Are you sure you want to remove comment?")) {
+			deleteCommentApi().then(() => {
+				const updatedBackendComments = backendComments.filter(
+					(backendComment) => backendComment.id !== commentId
+				);
+				setBackendComments(updatedBackendComments);
+			});
+		}
+	};
 
-  useEffect(() => {
-    getCommentsApi().then((data) => {
-      setBackendComments(data);
-    });
-  }, []);
+	useEffect(() => {
+		getCommentsApi().then((data) => {
+			setBackendComments(data);
+		});
+	}, []);
 
-  return (
-    <div className="comments">
-      <h3 className="comments-title">Comments</h3>
-      <div className="comment-form-title">Write comment</div>
-      <CommentForm submitLabel="Write" handleSubmit={addComment} />
-      <div className="comments-container">
-        {rootComments.map((rootComment) => (
-          <Comment
-            key={rootComment.id}
-            comment={rootComment}
-            replies={getReplies(rootComment.id)}
-            activeComment={activeComment}
-            setActiveComment={setActiveComment}
-            addComment={addComment}
-            deleteComment={deleteComment}
-            updateComment={updateComment}
-            currentUserId={currentUserId}
-          />
-        ))}
-      </div>
-    </div>
-  );
+	return (
+		<div className="comments">
+			<div className="comments-container">
+				{rootComments.map((rootComment) => (
+					<Comment
+						key={rootComment.id}
+						comment={rootComment}
+						replies={getReplies(rootComment.id)}
+						activeComment={activeComment}
+						setActiveComment={setActiveComment}
+						addComment={addComment}
+						deleteComment={deleteComment}
+						updateComment={updateComment}
+						currentUserId={currentUserId}
+					/>
+				))}
+			</div>
+			<CommentForm submitLabel="Write" handleSubmit={addComment} image />
+		</div>
+	);
 };
 
 export default Comments;
