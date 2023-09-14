@@ -18,7 +18,11 @@ const CommentForm = ({
 	return (
 		<form onSubmit={onSubmit} className={image ? "image-form" : ""}>
 			{image && (
-				<img height="35" width="35" src="/images/avatars/image-juliusomo.png" />
+				<img
+					height="35"
+					width="35"
+					src="./images/avatars/image-juliusomo.png"
+				/>
 			)}
 			<textarea
 				className="comment-form-textarea"
