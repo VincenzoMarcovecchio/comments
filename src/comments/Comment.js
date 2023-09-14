@@ -46,6 +46,13 @@ const Comment = ({
 							/>
 						</svg>
 					</div>
+					<img
+						src={
+							comment?.image?.png
+								? "/comments/" + comment?.image?.png
+								: "/comments/./images/avatars/image-juliusomo.png"
+						}
+					/>
 				</div>
 				<div className="comment-right-part">
 					<div className="comment-content">

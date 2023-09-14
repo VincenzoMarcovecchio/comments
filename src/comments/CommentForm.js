@@ -21,7 +21,7 @@ const CommentForm = ({
 				<img
 					height="35"
 					width="35"
-					src="./images/avatars/image-juliusomo.png"
+					src="/comments/./images/avatars/image-juliusomo.png"
 				/>
 			)}
 			<textarea
