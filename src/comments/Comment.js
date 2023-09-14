@@ -46,7 +46,6 @@ const Comment = ({
 							/>
 						</svg>
 					</div>
-					<img src={comment.image.png} />
 				</div>
 				<div className="comment-right-part">
 					<div className="comment-content">
