@@ -7,7 +7,7 @@ export const getComments = async () => {
 			userId: "1",
 			parentId: null,
 			image: {
-				png: "../images/avatars/image-amyrobson.png",
+				png: "./images/avatars/image-amyrobson.png",
 				webp: "./images/avatars/image-amyrobson.webp",
 			},
 			score: 4,
